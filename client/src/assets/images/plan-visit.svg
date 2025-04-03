@@ -1,0 +1,100 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F5F5F5"/>
+  
+  <!-- Map Background -->
+  <rect x="100" y="100" width="600" height="400" rx="15" fill="#E6E6FA" stroke="#6A5ACD" stroke-width="3" />
+  
+  <!-- Map Grid -->
+  <g stroke="#D8D8D8" stroke-width="1" opacity="0.6">
+    <line x1="100" y1="150" x2="700" y2="150" />
+    <line x1="100" y1="200" x2="700" y2="200" />
+    <line x1="100" y1="250" x2="700" y2="250" />
+    <line x1="100" y1="300" x2="700" y2="300" />
+    <line x1="100" y1="350" x2="700" y2="350" />
+    <line x1="100" y1="400" x2="700" y2="400" />
+    <line x1="100" y1="450" x2="700" y2="450" />
+    
+    <line x1="150" y1="100" x2="150" y2="500" />
+    <line x1="200" y1="100" x2="200" y2="500" />
+    <line x1="250" y1="100" x2="250" y2="500" />
+    <line x1="300" y1="100" x2="300" y2="500" />
+    <line x1="350" y1="100" x2="350" y2="500" />
+    <line x1="400" y1="100" x2="400" y2="500" />
+    <line x1="450" y1="100" x2="450" y2="500" />
+    <line x1="500" y1="100" x2="500" y2="500" />
+    <line x1="550" y1="100" x2="550" y2="500" />
+    <line x1="600" y1="100" x2="600" y2="500" />
+    <line x1="650" y1="100" x2="650" y2="500" />
+  </g>
+  
+  <!-- Major Cities -->
+  <!-- Delhi -->
+  <circle cx="180" cy="180" r="8" fill="#4169E1" />
+  <text x="180" y="165" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Delhi</text>
+  
+  <!-- Khajuraho -->
+  <circle cx="400" cy="300" r="12" fill="#FF4500" />
+  <text x="400" y="325" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold" fill="#333">Khajuraho</text>
+  
+  <!-- Hyderabad -->
+  <circle cx="350" cy="450" r="8" fill="#4169E1" />
+  <text x="350" y="470" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Hyderabad</text>
+  
+  <!-- Mumbai -->
+  <circle cx="200" cy="420" r="8" fill="#4169E1" />
+  <text x="200" y="440" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Mumbai</text>
+  
+  <!-- Kolkata -->
+  <circle cx="600" cy="350" r="8" fill="#4169E1" />
+  <text x="600" y="370" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Kolkata</text>
+  
+  <!-- Jaipur -->
+  <circle cx="230" cy="220" r="8" fill="#4169E1" />
+  <text x="230" y="240" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Jaipur</text>
+  
+  <!-- Routes -->
+  <!-- Delhi to Khajuraho -->
+  <path d="M180,180 Q290,200 400,300" stroke="#4169E1" stroke-width="3" fill="none" stroke-dasharray="5,5" />
+  <circle cx="290" cy="200" r="4" fill="#4169E1" />
+  <text x="300" cy="190" font-family="Arial, sans-serif" font-size="10" fill="#333">Train/Flight</text>
+  
+  <!-- Hyderabad to Khajuraho -->
+  <path d="M350,450 Q400,375 400,300" stroke="#4169E1" stroke-width="3" fill="none" stroke-dasharray="5,5" />
+  <circle cx="400" cy="375" r="4" fill="#4169E1" />
+  <text x="410" cy="375" font-family="Arial, sans-serif" font-size="10" fill="#333">Flight</text>
+  
+  <!-- Itinerary elements -->
+  <g transform="translate(620, 150)">
+    <rect width="60" height="30" rx="5" fill="#FFD700" stroke="#B8860B" stroke-width="1" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Day 1</text>
+  </g>
+  
+  <g transform="translate(620, 200)">
+    <rect width="60" height="30" rx="5" fill="#FF6347" stroke="#8B0000" stroke-width="1" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#FFF">Day 2</text>
+  </g>
+  
+  <g transform="translate(620, 250)">
+    <rect width="60" height="30" rx="5" fill="#32CD32" stroke="#006400" stroke-width="1" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Day 3</text>
+  </g>
+  
+  <!-- Legend -->
+  <rect x="120" y="520" width="560" height="60" rx="10" fill="#FFF" stroke="#6A5ACD" stroke-width="2" />
+  
+  <circle cx="150" y="540" r="6" fill="#4169E1" />
+  <text x="165" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="start" fill="#333">Major City</text>
+  
+  <circle cx="250" y="540" r="6" fill="#FF4500" />
+  <text x="265" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="start" fill="#333">Khajuraho</text>
+  
+  <line x1="350" y1="540" x2="390" y2="540" stroke="#4169E1" stroke-width="3" stroke-dasharray="5,5" />
+  <text x="405" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="start" fill="#333">Transport Route</text>
+  
+  <rect x="500" y="533" width="30" height="15" rx="2" fill="#FFD700" />
+  <text x="540" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="start" fill="#333">Itinerary Day</text>
+  
+  <!-- Title -->
+  <text x="400" y="80" font-family="serif" font-size="32" text-anchor="middle" fill="#6A5ACD">Plan Your Visit</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F4F1EA"/>
+  
+  <!-- Decorative pattern -->
+  <g opacity="0.1">
+    <circle cx="100" cy="100" r="50" fill="#A67B5B" />
+    <circle cx="300" cy="100" r="50" fill="#A67B5B" />
+    <circle cx="500" cy="100" r="50" fill="#A67B5B" />
+    <circle cx="700" cy="100" r="50" fill="#A67B5B" />
+    
+    <circle cx="200" cy="200" r="50" fill="#A67B5B" />
+    <circle cx="400" cy="200" r="50" fill="#A67B5B" />
+    <circle cx="600" cy="200" r="50" fill="#A67B5B" />
+    
+    <circle cx="100" cy="300" r="50" fill="#A67B5B" />
+    <circle cx="300" cy="300" r="50" fill="#A67B5B" />
+    <circle cx="500" cy="300" r="50" fill="#A67B5B" />
+    <circle cx="700" cy="300" r="50" fill="#A67B5B" />
+    
+    <circle cx="200" cy="400" r="50" fill="#A67B5B" />
+    <circle cx="400" cy="400" r="50" fill="#A67B5B" />
+    <circle cx="600" cy="400" r="50" fill="#A67B5B" />
+    
+    <circle cx="100" cy="500" r="50" fill="#A67B5B" />
+    <circle cx="300" cy="500" r="50" fill="#A67B5B" />
+    <circle cx="500" cy="500" r="50" fill="#A67B5B" />
+    <circle cx="700" cy="500" r="50" fill="#A67B5B" />
+  </g>
+  
+  <!-- Experience Categories -->
+  <!-- Cultural Category -->
+  <g transform="translate(200, 160)">
+    <rect width="160" height="160" rx="10" fill="#FADBD8" stroke="#E74C3C" stroke-width="2" />
+    
+    <!-- Cultural icon -->
+    <circle cx="80" cy="60" r="35" fill="#E74C3C" />
+    <rect x="65" y="25" width="30" height="60" rx="5" fill="#FADBD8" />
+    <path d="M58,90 L102,90 C102,105 95,110 80,110 C65,110 58,105 58,90" fill="#FADBD8" />
+    
+    <text x="80" y="140" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#E74C3C">Cultural</text>
+  </g>
+  
+  <!-- Adventure Category -->
+  <g transform="translate(440, 160)">
+    <rect width="160" height="160" rx="10" fill="#D5F5E3" stroke="#27AE60" stroke-width="2" />
+    
+    <!-- Adventure icon -->
+    <polygon points="80,25 110,80 80,65 50,80" fill="#27AE60" />
+    <rect x="75" y="65" width="10" height="45" fill="#27AE60" />
+    <path d="M55,110 L105,110 C105,110 100,120 80,120 C60,120 55,110 55,110" fill="#27AE60" />
+    
+    <text x="80" y="140" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#27AE60">Adventure</text>
+  </g>
+  
+  <!-- Spiritual Category -->
+  <g transform="translate(200, 370)">
+    <rect width="160" height="160" rx="10" fill="#EBF5FB" stroke="#3498DB" stroke-width="2" />
+    
+    <!-- Spiritual icon -->
+    <circle cx="80" cy="60" r="30" fill="none" stroke="#3498DB" stroke-width="2" />
+    <circle cx="80" cy="60" r="10" fill="#3498DB" />
+    <path d="M80,90 L80,110" stroke="#3498DB" stroke-width="2" />
+    <path d="M70,100 L90,100" stroke="#3498DB" stroke-width="2" />
+    <path d="M65,95 L95,105" stroke="#3498DB" stroke-width="2" />
+    <path d="M65,105 L95,95" stroke="#3498DB" stroke-width="2" />
+    
+    <text x="80" y="140" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#3498DB">Spiritual</text>
+  </g>
+  
+  <!-- Culinary Category -->
+  <g transform="translate(440, 370)">
+    <rect width="160" height="160" rx="10" fill="#FCF3CF" stroke="#F1C40F" stroke-width="2" />
+    
+    <!-- Culinary icon -->
+    <circle cx="80" cy="50" r="25" fill="#F1C40F" />
+    <rect x="60" y="75" width="40" height="10" rx="5" fill="#F1C40F" />
+    <rect x="70" y="85" width="20" height="30" rx="5" fill="#F1C40F" />
+    <path d="M60,115 L100,115 C100,115 95,125 80,125 C65,125 60,115 60,115" fill="#F1C40F" />
+    
+    <text x="80" y="140" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#F1C40F">Culinary</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="80" font-family="serif" font-size="40" text-anchor="middle" fill="#5D4037">
+    Khajuraho Experiences
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="120" font-family="serif" font-size="20" text-anchor="middle" fill="#5D4037">
+    Discover the richness of local culture
+  </text>
+</svg>

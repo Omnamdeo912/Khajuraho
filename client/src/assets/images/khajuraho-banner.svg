@@ -1,0 +1,58 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#F5EFE6"/>
+  
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A3D5FF" />
+      <stop offset="100%" stop-color="#E5F3FF" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="400" width="1200" height="200" fill="#D9B99B"/>
+  
+  <!-- Temple Architecture -->
+  <!-- Main Temple Structure -->
+  <rect x="400" y="150" width="400" height="350" fill="#D2B48C" />
+  
+  <!-- Temple Top -->
+  <polygon points="400,150 600,50 800,150" fill="#BF9D7A" />
+  
+  <!-- Temple Steps -->
+  <rect x="450" y="450" width="300" height="50" fill="#A67B5B" />
+  
+  <!-- Temple Windows -->
+  <rect x="450" y="200" width="60" height="100" fill="#8B4513" />
+  <rect x="570" y="200" width="60" height="100" fill="#8B4513" />
+  <rect x="690" y="200" width="60" height="100" fill="#8B4513" />
+  
+  <!-- Temple Sculptures (simplified) -->
+  <circle cx="480" cy="240" r="15" fill="#E8D0AA" />
+  <circle cx="600" cy="240" r="15" fill="#E8D0AA" />
+  <circle cx="720" cy="240" r="15" fill="#E8D0AA" />
+  
+  <!-- Smaller Temple Structures -->
+  <rect x="250" y="250" width="100" height="200" fill="#D2B48C" />
+  <polygon points="250,250 300,200 350,250" fill="#BF9D7A" />
+  
+  <rect x="850" y="250" width="100" height="200" fill="#D2B48C" />
+  <polygon points="850,250 900,200 950,250" fill="#BF9D7A" />
+  
+  <!-- Decorative Elements -->
+  <circle cx="900" cy="100" r="40" fill="#FFD700" />
+  
+  <!-- Trees -->
+  <circle cx="150" cy="350" r="50" fill="#228B22" />
+  <rect x="145" y="400" width="10" height="50" fill="#8B4513" />
+  
+  <circle cx="1050" cy="350" r="50" fill="#228B22" />
+  <rect x="1045" y="400" width="10" height="50" fill="#8B4513" />
+  
+  <!-- Text -->
+  <text x="600" y="550" font-family="serif" font-size="32" text-anchor="middle" fill="#4A2511">
+    Khajuraho Temples
+  </text>
+</svg>

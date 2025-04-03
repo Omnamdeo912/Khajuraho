@@ -1,0 +1,59 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F0EAD6"/>
+  
+  <!-- Sky gradient - morning colors -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87CEEB" />
+      <stop offset="100%" stop-color="#E0F7FA" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#skyGradient)"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="300" width="800" height="300" fill="#D2B48C"/>
+  
+  <!-- Main Eastern Temple - Parsvanatha Temple -->
+  <rect x="250" y="180" width="180" height="220" fill="#DAC292" />
+  
+  <!-- Temple Spire -->
+  <polygon points="250,180 340,100 430,180" fill="#C1A67B" />
+  
+  <!-- Temple platform -->
+  <rect x="230" y="400" width="220" height="20" fill="#A67B5B" />
+  
+  <!-- Temple door -->
+  <rect x="325" y="320" width="40" height="80" fill="#8B4513" />
+  
+  <!-- Temple windows -->
+  <rect x="280" y="230" width="25" height="50" fill="#8B4513" />
+  <rect x="375" y="230" width="25" height="50" fill="#8B4513" />
+  
+  <!-- Temple ornamental details -->
+  <rect x="250" y="200" width="180" height="5" fill="#A67B5B" />
+  <rect x="250" y="260" width="180" height="5" fill="#A67B5B" />
+  <rect x="250" y="320" width="180" height="5" fill="#A67B5B" />
+  
+  <!-- Jain Temple (another eastern group temple) -->
+  <rect x="500" y="220" width="150" height="180" fill="#DAC292" />
+  <polygon points="500,220 575,150 650,220" fill="#C1A67B" />
+  <rect x="485" y="400" width="180" height="15" fill="#A67B5B" />
+  <rect x="555" y="340" width="35" height="60" fill="#8B4513" />
+  
+  <!-- Small decorative elements -->
+  <circle cx="340" cy="230" r="8" fill="#E8D0AA" />
+  <circle cx="575" cy="270" r="8" fill="#E8D0AA" />
+  
+  <!-- Morning sun -->
+  <circle cx="700" cy="100" r="40" fill="#FFD700" />
+  <circle cx="700" cy="100" r="50" fill="#FFD700" opacity="0.3" />
+  
+  <!-- Text -->
+  <text x="400" y="520" font-family="serif" font-size="24" text-anchor="middle" fill="#4A2511">
+    Eastern Temple Group
+  </text>
+  <text x="400" y="550" font-family="serif" font-size="18" text-anchor="middle" fill="#4A2511">
+    Featuring Parsvanatha and Jain Temples
+  </text>
+</svg>
