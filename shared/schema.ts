@@ -7,8 +7,10 @@ export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
-  email: text("email"),
-  fullName: text("full_name"),
+  email: text("email").notNull(),
+  fullName: text("full_name").notNull(),
+  userType: text("user_type").notNull().default("complete-traveller"), // Options: "heritage-explorer", "complete-traveller"
+  preferences: json("preferences"), // JSON object to store user preferences
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -102,14 +104,30 @@ export const safetyTips = pgTable("safety_tips", {
   tips: json("tips").notNull(), // Array of tip strings
 });
 
+// User profiles with more detailed preferences
+export const userProfiles = pgTable("user_profiles", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().references(() => users.id),
+  interests: json("interests"), // Array of interests
+  travelPreferences: json("travel_preferences"), // Travel preferences object
+  visitHistory: json("visit_history"), // Array of visited places
+  savedItineraries: json("saved_itineraries"), // Array of saved itinerary IDs
+  savedExperiences: json("saved_experiences"), // Array of saved experience IDs
+  lastLogin: timestamp("last_login"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 // Define insert schemas
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
   email: true,
   fullName: true,
+  userType: true,
+  preferences: true,
 });
 
+export const insertUserProfileSchema = createInsertSchema(userProfiles);
 export const insertTempleGroupSchema = createInsertSchema(templeGroups);
 export const insertTempleSchema = createInsertSchema(temples);
 export const insertVirtualTourSchema = createInsertSchema(virtualTours);
@@ -123,6 +141,9 @@ export const insertSafetyTipSchema = createInsertSchema(safetyTips);
 // Define types
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+export type InsertUserProfile = z.infer<typeof insertUserProfileSchema>;
+export type UserProfile = typeof userProfiles.$inferSelect;
 
 export type InsertTempleGroup = z.infer<typeof insertTempleGroupSchema>;
 export type TempleGroup = typeof templeGroups.$inferSelect;

@@ -1,5 +1,6 @@
 import { 
   users, 
+  userProfiles,
   templeGroups, 
   temples, 
   virtualTours, 
@@ -11,6 +12,8 @@ import {
   safetyTips,
   type User, 
   type InsertUser,
+  type UserProfile,
+  type InsertUserProfile,
   type TempleGroup,
   type Temple,
   type VirtualTour,
@@ -27,6 +30,13 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  updateUser(id: number, data: Partial<InsertUser>): Promise<User | undefined>;
+  getUserByType(userType: string): Promise<User[]>;
+  
+  // User Profile operations
+  getUserProfile(userId: number): Promise<UserProfile | undefined>;
+  createUserProfile(profile: InsertUserProfile): Promise<UserProfile>;
+  updateUserProfile(userId: number, data: Partial<InsertUserProfile>): Promise<UserProfile | undefined>;
   
   // Temple Group operations
   getAllTempleGroups(): Promise<TempleGroup[]>;
@@ -72,6 +82,7 @@ export interface IStorage {
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
+  private userProfiles: Map<number, UserProfile>;
   private templeGroups: Map<number, TempleGroup>;
   private temples: Map<number, Temple>;
   private virtualTours: Map<number, VirtualTour>;
@@ -86,6 +97,7 @@ export class MemStorage implements IStorage {
 
   constructor() {
     this.users = new Map();
+    this.userProfiles = new Map();
     this.templeGroups = new Map();
     this.temples = new Map();
     this.virtualTours = new Map();
@@ -651,9 +663,64 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.currentId++;
-    const user: User = { ...insertUser, id };
+    const createdAt = new Date();
+    const user: User = { 
+      ...insertUser, 
+      id, 
+      createdAt,
+      userType: insertUser.userType || "Complete Traveller",
+      preferences: insertUser.preferences || {}
+    };
     this.users.set(id, user);
     return user;
+  }
+  
+  async updateUser(id: number, data: Partial<InsertUser>): Promise<User | undefined> {
+    const user = await this.getUser(id);
+    if (!user) return undefined;
+    
+    const updatedUser: User = { ...user, ...data };
+    this.users.set(id, updatedUser);
+    return updatedUser;
+  }
+  
+  async getUserByType(userType: string): Promise<User[]> {
+    return Array.from(this.users.values()).filter(
+      (user) => user.userType === userType
+    );
+  }
+  
+  async getUserProfile(userId: number): Promise<UserProfile | undefined> {
+    return Array.from(this.userProfiles.values()).find(
+      (profile) => profile.userId === userId
+    );
+  }
+  
+  async createUserProfile(profile: InsertUserProfile): Promise<UserProfile> {
+    const id = this.currentId++;
+    // Default values for required fields
+    const newProfile: UserProfile = { 
+      ...profile, 
+      id,
+      interests: profile.interests || [],
+      travelPreferences: profile.travelPreferences || {},
+      visitHistory: profile.visitHistory || [],
+      savedItineraries: profile.savedItineraries || [],
+      savedExperiences: profile.savedExperiences || [],
+      lastLogin: profile.lastLogin || new Date(),
+      updatedAt: profile.updatedAt || new Date()
+    };
+    this.userProfiles.set(id, newProfile);
+    return newProfile;
+  }
+  
+  async updateUserProfile(userId: number, data: Partial<InsertUserProfile>): Promise<UserProfile | undefined> {
+    const profile = await this.getUserProfile(userId);
+    if (!profile) return undefined;
+    
+    const updatedProfile: UserProfile = { ...profile, ...data };
+    this.userProfiles.set(profile.id, updatedProfile);
+    return updatedProfile;
   }
   
   // Temple Group methods
