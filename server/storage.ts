@@ -428,71 +428,425 @@ export class MemStorage implements IStorage {
     const itineraries: Itinerary[] = [
       {
         id: 1,
-        name: "Heritage Explorer",
-        days: 3,
+        name: "Heritage Explorer Package",
+        days: 2,
         targetPersona: "heritage-explorer",
         description: "Perfect for history enthusiasts who want to understand the architectural and cultural significance of Khajuraho in depth.",
         image: "temple-sculpture-3",
+        departureFrom: null,
+        isCustomizable: true,
+        highlights: [
+          "In-depth guided tour of all temple groups",
+          "Expert-led historical context sessions",
+          "Architectural photography opportunities",
+          "Special access to conservation areas"
+        ],
+        includedServices: [
+          "Expert temple historian as guide",
+          "All entrance fees",
+          "Photography permits",
+          "Detailed information booklet",
+          "Lunch on both days"
+        ],
         timeline: [
           {
             day: 1,
-            title: "Western Group Exploration",
+            title: "Western Group Masterclass",
             activities: [
-              "Guided tour of Kandariya Mahadev Temple",
-              "Visit to Lakshmana Temple",
-              "Explore Chitragupta and Vishvanatha Temples",
-              "Attend evening Light & Sound Show"
+              "7:00 AM: Early morning photography at Kandariya Mahadev Temple",
+              "9:00 AM: Detailed guided tour focusing on architectural elements",
+              "12:30 PM: Lunch with architectural discussion",
+              "2:00 PM: Lakshmana Temple with focus on relief sculptures",
+              "4:00 PM: Chitragupta and Vishvanatha Temples",
+              "7:00 PM: Evening Light & Sound Show with expert commentary"
             ]
           },
           {
             day: 2,
-            title: "Eastern & Southern Groups",
+            title: "Eastern & Southern Groups with Archaeological Context",
             activities: [
-              "Morning visit to Parsvanath and Adinath Temples",
-              "Lunch at local restaurant",
-              "Afternoon exploration of Duladeo and Chaturbhuj Temples",
-              "Sunset photography session"
-            ]
-          },
-          {
-            day: 3,
-            title: "Archaeological Museum & Panna National Park",
-            activities: [
-              "Morning visit to Archaeological Museum",
-              "Historical lecture by local expert",
-              "Afternoon safari at Panna National Park",
-              "Farewell dinner with cultural performance"
+              "6:30 AM: Sunrise photography at Eastern Group temples",
+              "8:30 AM: Detailed tour of Parsvanath and Adinath Temples",
+              "11:00 AM: Archaeological Museum with curator insights",
+              "1:00 PM: Historical lunch at heritage property",
+              "3:00 PM: Southern Group exploration focusing on Duladeo Temple",
+              "5:30 PM: Concluding session with Q&A on Chandela dynasty and temple preservation"
             ]
           }
         ]
       },
       {
         id: 2,
-        name: "Holistic Experience",
-        days: 2,
+        name: "Complete Traveller Experience",
+        days: 3,
         targetPersona: "holistic-experience",
         description: "A balanced experience combining heritage, local culture, and cuisine for those seeking a complete Khajuraho experience.",
-        image: "temple-sculpture-3",
+        image: "temple-sculpture-4",
+        departureFrom: null,
+        isCustomizable: true,
+        highlights: [
+          "Perfect blend of temples, nature, and culture",
+          "Interactions with local communities",
+          "Wildlife safari experience",
+          "Traditional cooking class"
+        ],
+        includedServices: [
+          "Professional tour guide",
+          "All entrance fees",
+          "Safari jeep fees",
+          "Cultural performance tickets",
+          "Meals as per itinerary"
+        ],
         timeline: [
           {
             day: 1,
             title: "Temple Highlights & Local Experiences",
             activities: [
-              "Morning visit to Western Group temples",
-              "Traditional lunch with local family",
-              "Afternoon cultural village visit",
-              "Evening cooking class featuring Bundelkhandi cuisine"
+              "9:00 AM: Western Group temple highlights tour",
+              "12:00 PM: Traditional lunch with local family",
+              "2:00 PM: Cultural village visit with artisan demonstrations",
+              "5:00 PM: Evening cooking class featuring Bundelkhandi cuisine",
+              "7:30 PM: Dinner with your own prepared dishes"
             ]
           },
           {
             day: 2,
             title: "Nature & More Temples",
             activities: [
-              "Sunrise yoga near Eastern Group temples",
-              "Visit to Jain temples",
-              "Lunch at Raja Café",
-              "Afternoon safari at Panna National Park",
-              "Evening shopping for local handicrafts"
+              "6:00 AM: Sunrise yoga near Eastern Group temples",
+              "8:00 AM: Breakfast at local cafe",
+              "9:30 AM: Visit to Jain temples with cultural context",
+              "12:30 PM: Lunch at Raja Café",
+              "2:00 PM: Afternoon safari at Panna National Park",
+              "6:00 PM: Evening shopping for local handicrafts with expert guidance"
+            ]
+          },
+          {
+            day: 3,
+            title: "Adventure & Relaxation",
+            activities: [
+              "8:00 AM: Morning boat ride on Ken River",
+              "10:30 AM: Visit to Raneh Falls (canyon)",
+              "1:00 PM: Picnic lunch at scenic spot",
+              "3:00 PM: Optional adventure activities (rappelling or nature walk)",
+              "6:00 PM: Farewell dinner with cultural performance"
+            ]
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: "Delhi to Khajuraho Heritage Explorer",
+        days: 4,
+        targetPersona: "heritage-explorer",
+        description: "A comprehensive journey from Delhi to Khajuraho designed for history enthusiasts and serious temple architecture students.",
+        image: "temple-sculpture-1",
+        departureFrom: "Delhi",
+        isCustomizable: true,
+        highlights: [
+          "Delhi's historical monuments as prelude",
+          "Train journey through historic heartland",
+          "Comprehensive Khajuraho temple exploration",
+          "Expert lectures on temple architecture evolution"
+        ],
+        includedServices: [
+          "AC train tickets Delhi-Jhansi",
+          "Private car Jhansi-Khajuraho",
+          "3-star accommodation",
+          "Expert guides in Delhi and Khajuraho",
+          "All entrance fees",
+          "Daily breakfast"
+        ],
+        timeline: [
+          {
+            day: 1,
+            title: "Delhi Historical Context",
+            activities: [
+              "9:00 AM: Visit to National Museum (focus on temple art section)",
+              "12:00 PM: Lunch at Connaught Place",
+              "2:00 PM: Qutub Minar complex (comparative architectural study)",
+              "5:00 PM: Evening lecture on North Indian temple architectural evolution",
+              "7:30 PM: Dinner and preparation for journey"
+            ]
+          },
+          {
+            day: 2,
+            title: "Journey to Khajuraho",
+            activities: [
+              "6:00 AM: Departure on Shatabdi Express to Jhansi",
+              "10:30 AM: Arrival in Jhansi",
+              "11:00 AM: Visit to Jhansi Fort",
+              "1:00 PM: Lunch in Orchha",
+              "2:30 PM: Exploration of Orchha temples and palaces",
+              "5:00 PM: Drive to Khajuraho",
+              "7:30 PM: Check-in and dinner at hotel in Khajuraho"
+            ]
+          },
+          {
+            day: 3,
+            title: "Western Group Masterclass",
+            activities: [
+              "7:00 AM: Early morning photography at Kandariya Mahadev Temple",
+              "9:00 AM: Detailed guided tour focusing on architectural elements",
+              "12:30 PM: Lunch with architectural discussion",
+              "2:00 PM: Lakshmana Temple with focus on relief sculptures",
+              "4:00 PM: Chitragupta and Vishvanatha Temples",
+              "7:00 PM: Evening Light & Sound Show with expert commentary"
+            ]
+          },
+          {
+            day: 4,
+            title: "Eastern & Southern Groups",
+            activities: [
+              "6:30 AM: Sunrise photography at Eastern Group temples",
+              "8:30 AM: Detailed tour of Parsvanath and Adinath Temples",
+              "11:00 AM: Archaeological Museum with curator insights",
+              "1:00 PM: Historical lunch at heritage property",
+              "3:00 PM: Southern Group exploration focusing on Duladeo Temple",
+              "5:30 PM: Concluding session with Q&A on comparative temple architecture"
+            ]
+          }
+        ]
+      },
+      {
+        id: 4,
+        name: "Delhi to Khajuraho Complete Experience",
+        days: 5,
+        targetPersona: "holistic-experience",
+        description: "A perfect blend of Delhi urban exploration, journey through central India, and Khajuraho's temples, culture, and nature.",
+        image: "temple-sculpture-2",
+        departureFrom: "Delhi",
+        isCustomizable: true,
+        highlights: [
+          "Delhi's modern and historical attractions",
+          "Scenic journey through Central India",
+          "Temples, wildlife, and local culture",
+          "Authentic culinary experiences"
+        ],
+        includedServices: [
+          "AC train tickets Delhi-Jhansi",
+          "Private car throughout the trip",
+          "3-star accommodation",
+          "Professional guides",
+          "Safari and activity fees",
+          "Daily breakfast and select meals"
+        ],
+        timeline: [
+          {
+            day: 1,
+            title: "Delhi Exploration",
+            activities: [
+              "9:00 AM: Visit to India Gate and Parliament area",
+              "11:30 AM: Humayun's Tomb exploration",
+              "1:30 PM: Lunch at Khan Market",
+              "3:00 PM: Craft Museum visit",
+              "5:00 PM: Shopping at Dilli Haat for handicrafts",
+              "7:30 PM: Dinner at Karim's Old Delhi"
+            ]
+          },
+          {
+            day: 2,
+            title: "Journey Through Heartland",
+            activities: [
+              "8:00 AM: Departure on Shatabdi Express to Jhansi",
+              "12:30 PM: Arrival and lunch in Jhansi",
+              "2:00 PM: Visit to Orchha Ram Raja Temple and palaces",
+              "4:30 PM: Drive to Khajuraho through rural landscapes",
+              "7:00 PM: Check-in at hotel in Khajuraho",
+              "8:00 PM: Dinner with introduction to Bundelkhandi cuisine"
+            ]
+          },
+          {
+            day: 3,
+            title: "Temple Highlights & Local Culture",
+            activities: [
+              "9:00 AM: Western Group temple highlights tour",
+              "12:00 PM: Traditional lunch with local family",
+              "2:00 PM: Cultural village visit with artisan demonstrations",
+              "5:00 PM: Evening cooking class featuring Bundelkhandi cuisine",
+              "7:30 PM: Dinner with your own prepared dishes"
+            ]
+          },
+          {
+            day: 4,
+            title: "Nature & More Temples",
+            activities: [
+              "6:00 AM: Sunrise yoga near Eastern Group temples",
+              "8:00 AM: Breakfast at local cafe",
+              "9:30 AM: Visit to Jain temples with cultural context",
+              "12:30 PM: Lunch at Raja Café",
+              "2:00 PM: Afternoon safari at Panna National Park",
+              "6:00 PM: Evening shopping for local handicrafts"
+            ]
+          },
+          {
+            day: 5,
+            title: "Adventure & Departure",
+            activities: [
+              "8:00 AM: Morning boat ride on Ken River",
+              "10:30 AM: Visit to Raneh Falls (canyon)",
+              "1:00 PM: Picnic lunch at scenic spot",
+              "3:00 PM: Transfer to Khajuraho airport or railway station",
+              "Optional: Extension to Varanasi or return to Delhi"
+            ]
+          }
+        ]
+      },
+      {
+        id: 5,
+        name: "Hyderabad to Khajuraho Heritage Trail",
+        days: 4,
+        targetPersona: "heritage-explorer",
+        description: "Connect the architectural brilliance of Hyderabad's monuments with Khajuraho's temples on this scholarly journey.",
+        image: "temple-sculpture-5",
+        departureFrom: "Hyderabad",
+        isCustomizable: true,
+        highlights: [
+          "Comparative architectural study",
+          "Islamic and Hindu monument connections",
+          "Flight to ensure comfort and save time",
+          "Expert lectures throughout"
+        ],
+        includedServices: [
+          "Hyderabad-Delhi-Khajuraho flights",
+          "All ground transportation",
+          "4-star heritage accommodations",
+          "Specialized architectural guides",
+          "All entrance and camera fees",
+          "Daily breakfast and select meals"
+        ],
+        timeline: [
+          {
+            day: 1,
+            title: "Hyderabad's Monumental Heritage",
+            activities: [
+              "9:00 AM: Golconda Fort tour with focus on architecture",
+              "12:00 PM: Lunch at historic Falaknuma Palace",
+              "2:30 PM: Charminar and Mecca Masjid exploration",
+              "5:00 PM: Salar Jung Museum (sculpture collection)",
+              "7:30 PM: Dinner with lecture on Southern-Northern architectural transitions"
+            ]
+          },
+          {
+            day: 2,
+            title: "Journey to Khajuraho",
+            activities: [
+              "8:00 AM: Flight to Delhi",
+              "10:30 AM: Arrival and connection",
+              "1:00 PM: Flight to Khajuraho",
+              "2:30 PM: Arrival and check-in",
+              "4:00 PM: Orientation walk around temple complex perimeter",
+              "6:00 PM: Introductory lecture on Chandela architecture",
+              "7:30 PM: Dinner at hotel"
+            ]
+          },
+          {
+            day: 3,
+            title: "Western Group In-Depth Study",
+            activities: [
+              "7:00 AM: Early photography session at Kandariya Mahadev",
+              "9:00 AM: Detailed architectural tour of Western Group",
+              "12:30 PM: Discussion lunch with architectural expert",
+              "2:30 PM: Technical examination of construction methods",
+              "5:00 PM: Documentation time (sketching, photography)",
+              "7:00 PM: Evening Light & Sound Show"
+            ]
+          },
+          {
+            day: 4,
+            title: "Eastern & Southern Groups with Museum",
+            activities: [
+              "6:30 AM: Sunrise at Eastern Group temples",
+              "8:30 AM: Detailed tour comparing Eastern and Western styles",
+              "11:00 AM: Archaeological Museum with focus on recovered fragments",
+              "1:00 PM: Farewell lunch",
+              "3:00 PM: Final documentation time",
+              "5:00 PM: Concluding discussion on Hindu temple architecture evolution"
+            ]
+          }
+        ]
+      },
+      {
+        id: 6,
+        name: "Hyderabad to Khajuraho Cultural Journey",
+        days: 5,
+        targetPersona: "holistic-experience",
+        description: "Experience the cultural richness from Hyderabad's cosmopolitan heritage to Khajuraho's historical temples and natural beauty.",
+        image: "temple-sculpture-6",
+        departureFrom: "Hyderabad",
+        isCustomizable: true,
+        highlights: [
+          "Hyderabad's cuisine and crafts",
+          "Comfortable travel connections",
+          "Balanced temple and nature experiences",
+          "Cultural performances and workshops"
+        ],
+        includedServices: [
+          "Hyderabad-Delhi-Khajuraho flights",
+          "All ground transportation",
+          "3-star boutique accommodations",
+          "Professional guides",
+          "Activity and performance fees",
+          "Daily breakfast and select specialty meals"
+        ],
+        timeline: [
+          {
+            day: 1,
+            title: "Hyderabad Culture & Cuisine",
+            activities: [
+              "9:00 AM: Chowmahalla Palace visit",
+              "11:30 AM: Laad Bazaar shopping for bangles and textiles",
+              "1:00 PM: Authentic Hyderabadi biryani lunch",
+              "3:00 PM: Bidri and pearl craft demonstration",
+              "5:30 PM: Hussain Sagar Lake cruise",
+              "8:00 PM: Dinner with Hyderabadi specialties"
+            ]
+          },
+          {
+            day: 2,
+            title: "Journey to Khajuraho",
+            activities: [
+              "9:00 AM: Flight to Delhi",
+              "11:30 AM: Arrival and connection",
+              "2:00 PM: Flight to Khajuraho",
+              "3:30 PM: Arrival and check-in",
+              "5:00 PM: Orientation walk and local market visit",
+              "7:00 PM: Welcome dinner with folk music"
+            ]
+          },
+          {
+            day: 3,
+            title: "Temple Highlights & Local Experiences",
+            activities: [
+              "8:30 AM: Western Group temple highlights tour",
+              "12:00 PM: Traditional lunch with local family",
+              "2:00 PM: Cultural village visit with artisan demonstrations",
+              "5:00 PM: Evening cooking class featuring Bundelkhandi cuisine",
+              "7:30 PM: Dinner with your own prepared dishes"
+            ]
+          },
+          {
+            day: 4,
+            title: "Nature & Wildlife",
+            activities: [
+              "6:00 AM: Sunrise yoga near Eastern Group temples",
+              "8:30 AM: Breakfast at local cafe",
+              "10:00 AM: Eastern and Southern temple groups",
+              "1:00 PM: Lunch at Raja Café",
+              "2:30 PM: Afternoon safari at Panna National Park",
+              "7:00 PM: Dinner and cultural show"
+            ]
+          },
+          {
+            day: 5,
+            title: "Ken River & Departure",
+            activities: [
+              "8:00 AM: Morning boat ride on Ken River",
+              "10:30 AM: Visit to Raneh Falls (canyon)",
+              "1:00 PM: Picnic lunch at scenic spot",
+              "3:00 PM: Free time for final shopping or photography",
+              "5:00 PM: Farewell tea ceremony",
+              "Transfer to airport for evening departure"
             ]
           }
         ]

@@ -63,6 +63,10 @@ export const itineraries = pgTable("itineraries", {
   targetPersona: text("target_persona").notNull(), // "heritage-explorer", "holistic-experience"
   description: text("description").notNull(),
   image: text("image").notNull(),
+  departureFrom: text("departure_from"), // "Delhi", "Hyderabad", etc.
+  isCustomizable: boolean("is_customizable").default(false),
+  highlights: json("highlights"), // Array of highlight strings
+  includedServices: json("included_services"), // Array of included services
   timeline: json("timeline").notNull(), // Array of day-by-day activities
 });
 

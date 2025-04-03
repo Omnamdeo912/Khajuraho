@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { getImageUrl } from "@/lib/utils";
+import CustomItineraryPlanner from "./CustomItineraryPlanner";
 
 type PlanTab = "getting-there" | "itineraries" | "accommodation" | "seasonal";
 
@@ -247,184 +248,50 @@ const PlanYourVisit = () => {
         
         {/* Itineraries Tab Content */}
         <div className={activeTab === "itineraries" ? "block" : "hidden"}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <h3 className="font-display text-2xl font-bold mb-6">Suggested Itineraries</h3>
-              
-              <div className="space-y-8">
-                {/* Heritage Explorer Itinerary */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3">
-                      <img 
-                        src={getImageUrl("temple-sculpture-3")}
-                        alt="Heritage Explorer Itinerary" 
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>
-                    <div className="p-6 md:w-2/3">
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="font-display font-bold text-xl">Heritage Explorer</h4>
-                        <span className="bg-background text-primary/90 text-xs font-medium py-1 px-2 rounded">3 Days</span>
-                      </div>
-                      <p className="text-gray-700 text-sm mb-4">
-                        Perfect for history enthusiasts who want to understand the architectural and cultural significance of Khajuraho in depth.
-                      </p>
-                      
-                      <div className="relative pl-6 mb-4">
-                        <div className="absolute top-0 bottom-0 left-2 timeline-line"></div>
-                        
-                        <div className="relative mb-4">
-                          <div className="absolute left-[-24px] top-0 timeline-dot bg-primary"></div>
-                          <h5 className="font-medium text-sm">Day 1: Western Group Exploration</h5>
-                          <p className="text-xs text-gray-600">Full day guided tour of the Western Group temples</p>
-                        </div>
-                        
-                        <div className="relative mb-4">
-                          <div className="absolute left-[-24px] top-0 timeline-dot bg-primary"></div>
-                          <h5 className="font-medium text-sm">Day 2: Eastern & Southern Groups</h5>
-                          <p className="text-xs text-gray-600">Morning: Eastern Group | Afternoon: Southern Group</p>
-                        </div>
-                        
-                        <div className="relative">
-                          <div className="absolute left-[-24px] top-0 timeline-dot bg-primary"></div>
-                          <h5 className="font-medium text-sm">Day 3: Archaeological Museum & Panna National Park</h5>
-                          <p className="text-xs text-gray-600">Morning: Museum | Afternoon: Wildlife</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-primary/90">Ideal for Harry's Persona</span>
-                        <a href="#" className="text-primary font-medium text-sm hover:text-primary/90 transition-colors">
-                          View detailed itinerary →
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div className="mb-8">
+            <div className="bg-white rounded-lg shadow-md">
+              <div className="p-6">
+                <h3 className="font-display text-2xl font-bold mb-2">Explore Our Curated Itineraries</h3>
+                <p className="text-gray-600 mb-6">
+                  Discover itineraries tailored for different traveler types, whether you're a Heritage Explorer seeking deep architectural insights or a Complete Traveller looking for a balanced experience of culture, temples, and nature.
+                </p>
                 
-                {/* Holistic Experience Itinerary */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3">
-                      <img 
-                        src={getImageUrl("temple-sculpture-3")}
-                        alt="Holistic Experience Itinerary" 
-                        className="w-full h-full object-cover" 
-                      />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="flex items-start">
+                    <div className="bg-primary/10 rounded-full p-2 mr-3 flex-shrink-0">
+                      <Check className="text-primary h-5 w-5" />
                     </div>
-                    <div className="p-6 md:w-2/3">
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="font-display font-bold text-xl">Holistic Experience</h4>
-                        <span className="bg-background text-primary/90 text-xs font-medium py-1 px-2 rounded">2 Days</span>
-                      </div>
-                      <p className="text-gray-700 text-sm mb-4">
-                        A balanced experience combining heritage, local culture, and cuisine for those seeking a complete Khajuraho experience.
-                      </p>
-                      
-                      <div className="relative pl-6 mb-4">
-                        <div className="absolute top-0 bottom-0 left-2 timeline-line"></div>
-                        
-                        <div className="relative mb-4">
-                          <div className="absolute left-[-24px] top-0 timeline-dot bg-primary"></div>
-                          <h5 className="font-medium text-sm">Day 1: Temple Highlights & Local Experiences</h5>
-                          <p className="text-xs text-gray-600">Morning: Western Group | Afternoon: Cultural Village Visit & Cooking Class</p>
-                        </div>
-                        
-                        <div className="relative">
-                          <div className="absolute left-[-24px] top-0 timeline-dot bg-primary"></div>
-                          <h5 className="font-medium text-sm">Day 2: Nature & More Temples</h5>
-                          <p className="text-xs text-gray-600">Morning: Eastern Group & Jain Temples | Afternoon: Panna National Park Safari</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-primary/90">Ideal for Priyanshi's Persona</span>
-                        <a href="#" className="text-primary font-medium text-sm hover:text-primary/90 transition-colors">
-                          View detailed itinerary →
-                        </a>
-                      </div>
+                    <div>
+                      <h4 className="font-medium text-base">Personalized Routes</h4>
+                      <p className="text-sm text-gray-600">Starting from Delhi or Hyderabad with multiple options</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-primary/10 rounded-full p-2 mr-3 flex-shrink-0">
+                      <Check className="text-primary h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-base">Expert-Designed Plans</h4>
+                      <p className="text-sm text-gray-600">Carefully crafted itineraries by travel specialists</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-primary/10 rounded-full p-2 mr-3 flex-shrink-0">
+                      <Check className="text-primary h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-base">Customizable Options</h4>
+                      <p className="text-sm text-gray-600">Flexibility to modify based on your interests</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div>
-              <div className="sticky top-24">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <div className="bg-primary p-4">
-                    <h3 className="font-display text-white font-bold text-xl">Custom Itinerary</h3>
-                  </div>
-                  <div className="p-5">
-                    <div className="space-y-4">
-                      <div>
-                        <Label>Your Interests</Label>
-                        <div className="grid grid-cols-2 gap-2">
-                          <div className="flex items-center">
-                            <input type="checkbox" className="rounded text-primary focus:ring-primary mr-2" id="architecture" />
-                            <Label htmlFor="architecture" className="text-sm font-normal">Architecture</Label>
-                          </div>
-                          <div className="flex items-center">
-                            <input type="checkbox" className="rounded text-primary focus:ring-primary mr-2" id="sculpture" />
-                            <Label htmlFor="sculpture" className="text-sm font-normal">Sculpture</Label>
-                          </div>
-                          <div className="flex items-center">
-                            <input type="checkbox" className="rounded text-primary focus:ring-primary mr-2" id="local-culture" />
-                            <Label htmlFor="local-culture" className="text-sm font-normal">Local Culture</Label>
-                          </div>
-                          <div className="flex items-center">
-                            <input type="checkbox" className="rounded text-primary focus:ring-primary mr-2" id="wildlife" />
-                            <Label htmlFor="wildlife" className="text-sm font-normal">Wildlife</Label>
-                          </div>
-                          <div className="flex items-center">
-                            <input type="checkbox" className="rounded text-primary focus:ring-primary mr-2" id="cuisine" />
-                            <Label htmlFor="cuisine" className="text-sm font-normal">Cuisine</Label>
-                          </div>
-                          <div className="flex items-center">
-                            <input type="checkbox" className="rounded text-primary focus:ring-primary mr-2" id="handicrafts" />
-                            <Label htmlFor="handicrafts" className="text-sm font-normal">Handicrafts</Label>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <Label htmlFor="duration">Duration</Label>
-                        <select 
-                          id="duration"
-                          className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 py-2 px-3 border"
-                        >
-                          <option>1 Day (Quick Visit)</option>
-                          <option>2 Days</option>
-                          <option>3 Days</option>
-                          <option>4+ Days</option>
-                        </select>
-                      </div>
-                      <div>
-                        <Label>Travel Style</Label>
-                        <div className="grid grid-cols-2 gap-2">
-                          <Button className="py-2 text-sm">Relaxed</Button>
-                          <Button variant="outline" className="py-2 text-sm hover:bg-gray-200">Intensive</Button>
-                        </div>
-                      </div>
-                      <Button className="w-full">Generate Custom Itinerary</Button>
-                    </div>
-                    
-                    <div className="mt-6 pt-6 border-t border-gray-200">
-                      <h4 className="font-medium text-lg mb-3">Need a Guide?</h4>
-                      <p className="text-sm text-gray-600 mb-4">
-                        Licensed guides can enhance your temple experience with historical context and stories.
-                      </p>
-                      <Button 
-                        variant="outline" 
-                        className="flex items-center justify-center w-full border-primary text-primary hover:bg-primary/20 hover:text-primary"
-                      >
-                        <Phone className="mr-2 h-4 w-4" /> Find a Guide
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+          
+          {/* Custom Itinerary Planner Component */}
+          <div className="w-full">
+            <CustomItineraryPlanner />
           </div>
         </div>
         
