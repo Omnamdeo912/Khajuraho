@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX, SkipForward } from 'lucide-react';
 import { useLocation } from 'wouter';
-import CustomVideoPlayer from './CustomVideoPlayer';
 
 const TeaserVideo = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [showExploreButton, setShowExploreButton] = useState(true);
-  const [showVirtualTour, setShowVirtualTour] = useState(false);
+  const [showYouTubeVideo, setShowYouTubeVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [, setLocation] = useLocation();
 
@@ -40,8 +39,7 @@ const TeaserVideo = () => {
   }, [setLocation]);
 
   const handleExplore = () => {
-    setIsVisible(false);
-    setShowVirtualTour(true);
+    setShowYouTubeVideo(true);
   };
 
   const toggleSound = (e: React.MouseEvent) => {
@@ -60,17 +58,59 @@ const TeaserVideo = () => {
     setLocation('/');
   };
 
-  if (!isVisible && !showVirtualTour) return null;
+  if (!isVisible && !showYouTubeVideo) return null;
 
-  if (showVirtualTour) {
+  if (showYouTubeVideo) {
     return (
-      <CustomVideoPlayer
-        onClose={() => {
-          setShowVirtualTour(false);
-          setLocation('/');
-        }}
-        videoId="YOUR_VIDEO_ID"
-      />
+      <div className="fixed inset-0 z-[9999] bg-black">
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/i8LTDFomR8o?autoplay=1&mute=0&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&origin=http://localhost:3000"
+          title="Khajuraho Virtual Tour"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 gap-4">
+          <button
+            onClick={() => {
+              setShowYouTubeVideo(false);
+              setLocation('/');
+            }}
+            className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full hover:bg-white/20 transition-all group"
+          >
+            <span className="flex items-center gap-2">
+              Explore More
+              <svg
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <button
+          onClick={() => {
+            setShowYouTubeVideo(false);
+            setLocation('/');
+          }}
+          className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all group"
+        >
+          <div className="flex items-center gap-2">
+            <SkipForward className="w-6 h-6" />
+            <span className="w-0 group-hover:w-[140px] transition-all duration-300 whitespace-nowrap overflow-hidden">
+              Skip to main content
+            </span>
+          </div>
+        </button>
+      </div>
     );
   }
 
@@ -83,6 +123,7 @@ const TeaserVideo = () => {
         muted
         playsInline
         controls={false}
+        preload="auto"
       >
         <source src="/Khajuraho-treaser.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -126,19 +167,6 @@ const TeaserVideo = () => {
           >
             <span className="flex items-center gap-2">
               Explore Khajuraho
-              <svg
-                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
             </span>
           </button>
           
