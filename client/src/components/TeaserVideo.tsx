@@ -1,0 +1,166 @@
+import { useState, useEffect, useRef } from 'react';
+import { Volume2, VolumeX, SkipForward } from 'lucide-react';
+import { useLocation } from 'wouter';
+import CustomVideoPlayer from './CustomVideoPlayer';
+
+const TeaserVideo = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [showExploreButton, setShowExploreButton] = useState(true);
+  const [showVirtualTour, setShowVirtualTour] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) {
+      console.error('Video element not found');
+      return;
+    }
+
+    console.log('Video element found, adding event listeners');
+
+    const handleEnded = () => {
+      console.log('Video ended');
+      setIsVisible(false);
+      setLocation('/');
+    };
+
+    const handleError = (e: Event) => {
+      console.error('Video error:', e);
+    };
+
+    video.addEventListener('ended', handleEnded);
+    video.addEventListener('error', handleError);
+
+    return () => {
+      video.removeEventListener('ended', handleEnded);
+      video.removeEventListener('error', handleError);
+    };
+  }, [setLocation]);
+
+  const handleExplore = () => {
+    setIsVisible(false);
+    setShowVirtualTour(true);
+  };
+
+  const toggleSound = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleSkip = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+    setIsVisible(false);
+    setLocation('/');
+  };
+
+  if (!isVisible && !showVirtualTour) return null;
+
+  if (showVirtualTour) {
+    return (
+      <CustomVideoPlayer
+        onClose={() => {
+          setShowVirtualTour(false);
+          setLocation('/');
+        }}
+        videoId="YOUR_VIDEO_ID"
+      />
+    );
+  }
+
+  return (
+    <div className="fixed inset-0 z-[9999] bg-black">
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        autoPlay
+        muted
+        playsInline
+        controls={false}
+      >
+        <source src="/Khajuraho-treaser.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div className="absolute top-4 right-4 flex flex-col gap-4">
+        <button
+          onClick={toggleSound}
+          className="group relative p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all overflow-hidden"
+        >
+          <div className="flex items-center gap-2">
+            {isMuted ? (
+              <VolumeX className="w-6 h-6" />
+            ) : (
+              <Volume2 className="w-6 h-6" />
+            )}
+            <span className="w-0 group-hover:w-[100px] transition-all duration-300 whitespace-nowrap overflow-hidden">
+              {isMuted ? 'Unmute' : 'Mute'}
+            </span>
+          </div>
+        </button>
+
+        <button
+          onClick={handleSkip}
+          className="group relative p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all overflow-hidden"
+        >
+          <div className="flex items-center gap-2">
+            <SkipForward className="w-6 h-6" />
+            <span className="w-0 group-hover:w-[140px] transition-all duration-300 whitespace-nowrap overflow-hidden">
+              Skip to main content
+            </span>
+          </div>
+        </button>
+      </div>
+
+      {showExploreButton && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+          <button
+            onClick={handleExplore}
+            className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full hover:bg-white/20 transition-all group"
+          >
+            <span className="flex items-center gap-2">
+              Explore Khajuraho
+              <svg
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
+          </button>
+          
+          <div className="animate-bounce">
+            <svg
+              className="w-8 h-8 text-white/80"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default TeaserVideo; 

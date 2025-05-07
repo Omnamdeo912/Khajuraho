@@ -1,85 +1,94 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "@/lib/logo2.svg";
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const isActive = (path: string) => {
-    return location === path;
-  };
-
   const menuItems = [
-    { href: "#temples", label: "Temples" },
-    { href: "#virtualtour", label: "Virtual Tours" },
-    { href: "#plan", label: "Plan Your Visit" },
-    { href: "#experiences", label: "Experiences" },
-    { href: "#safety", label: "Tips & Safety" },
-    { href: "#contact", label: "Contact", buttonStyle: true }
+    { name: "Home", path: "/" },
+    { name: "Temples", path: "#temples" },
+    { name: "Virtual Tour", path: "#virtualtour" },
+    { name: "Itinerary", path: "#plan" },
+    { name: "Experiences", path: "#experiences" },
+    { name: "Local Food", path: "#localcuisine" },
   ];
 
+  const handleNavigation = (path: string) => {
+    if (path.startsWith('#')) {
+      const element = document.querySelector(path);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header className="sticky top-0 z-50 shadow-md bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center px-4 py-3 lg:py-0">
-          <Link href="/">
-            <a className="flex items-center">
-              <span className="text-2xl font-display font-bold text-sandstone">Khajuraho</span>
-              <span className="ml-1 text-sm text-terracotta">Heritage</span>
-            </a>
-          </Link>
-          
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button 
-              type="button" 
-              className="text-gray-600 hover:text-sandstone focus:outline-none"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
+    <header className="absolute top-0 left-0 right-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center space-x-2 group">
+              <img 
+                src={logo} 
+                alt="Khajuraho Heritage Logo" 
+                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="flex flex-col justify-center">
+                <span className="text-3xl pt-5 font-['MedievalSharp'] font-bold text-white leading-none hover:text-[#EA7300] tracking-wide">Khajuraho</span>
+              </div>
+            </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 items-center">
-            {menuItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className={`${
-                  item.buttonStyle
-                    ? "py-2 px-4 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
-                    : "py-5 px-3 hover:text-primary transition-colors font-medium"
-                } ${isActive(item.href) ? "text-primary" : ""}`}
+          <nav className="hidden md:flex space-x-8 pt-5">
+            {menuItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => handleNavigation(item.path)}
+                className="text-xl relative font-['MedievalSharp'] text-white hover:text-[#EA7300] transition-all duration-300 font-medium px-3 py-2 group"
               >
-                {item.label}
-              </a>
+                {item.name}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#EA7300] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </button>
             ))}
           </nav>
-        </div>
-        
-        {/* Mobile Menu */}
-        <nav className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'} flex flex-col py-2 space-y-2 px-4`}>
-          {menuItems.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              className={`py-2 hover:text-primary transition-colors ${
-                isActive(item.href) ? "text-primary" : ""
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-lg text-[#EA7300]/90 hover:text-[#EA7300] hover:bg-[#EA7300]/10 focus:outline-none focus:ring-2 focus:ring-[#EA7300]/20 transition-all duration-300"
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
       </div>
+
+      {/* Mobile Navigation */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-4 py-3 space-y-2 bg-black/50 backdrop-blur-md">
+            {menuItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => handleNavigation(item.path)}
+                className="block px-4 py-2 rounded-lg text-[#EA7300]/90 hover:text-[#EA7300] hover:bg-[#EA7300]/10 transition-all duration-300 font-medium w-full text-left"
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };

@@ -45,7 +45,7 @@ const localFoods: LocalFood[] = [
     id: 4,
     name: "Bhate Ka Raita",
     description: "Roasted and mashed eggplant mixed with yogurt and spices, served as a side dish.",
-    image: "cuisine-4",
+    image: "client/public/Baingan-Raita-2-650x900.jpg",
     tag: "Refreshing side"
   }
 ];
@@ -100,7 +100,7 @@ const renderStars = (rating: number) => {
 
 const LocalFoodSection = () => {
   return (
-    <section className="py-16">
+    <section id="localcuisine" className="py-16">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Local Cuisine</h2>

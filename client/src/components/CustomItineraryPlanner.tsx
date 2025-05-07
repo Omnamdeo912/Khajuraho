@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Itinerary, User as SelectUser } from "@shared/schema";
 import { getImageUrl } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
+import { getQueryFn } from "@/lib/queryClient";
 
 // Enhanced Itinerary type with specific typed JSON fields
 interface EnhancedItinerary extends Omit<Itinerary, 'highlights' | 'includedServices'> {
@@ -48,6 +49,7 @@ const CustomItineraryPlanner = () => {
   // Fetch itineraries
   const { data: rawItineraries, isLoading } = useQuery<Itinerary[]>({
     queryKey: ["/api/itineraries"],
+    queryFn: getQueryFn({ on401: "returnNull" }),
     enabled: true,
   });
   

@@ -11,7 +11,13 @@ import { pool } from "./db";
 
 declare global {
   namespace Express {
-    interface User extends SelectUser {}
+    interface User {
+      id: number;
+      username: string;
+      email: string;
+      fullName: string;
+      userType: string;
+    }
   }
 }
 
@@ -34,9 +40,9 @@ export function setupAuth(app: Express) {
   const PostgresSessionStore = connectPg(session);
 
   const sessionSettings: session.SessionOptions = {
-    secret: process.env.SESSION_SECRET || "khajuraho_temple_secret",
+    secret: "mock_secret",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: new PostgresSessionStore({ 
       pool, 
       createTableIfMissing: true,
@@ -44,7 +50,7 @@ export function setupAuth(app: Express) {
     }),
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-      secure: process.env.NODE_ENV === "production",
+      secure: false,
       sameSite: "lax"
     }
   };
@@ -79,48 +85,37 @@ export function setupAuth(app: Express) {
     }
   });
 
-  app.post("/api/register", async (req, res, next) => {
-    try {
-      const existingUser = await storage.getUserByUsername(req.body.username);
-      if (existingUser) {
-        return res.status(400).json({ message: "Username already exists" });
-      }
-
-      const user = await storage.createUser({
-        ...req.body,
-        password: await hashPassword(req.body.password),
-      });
-
-      req.login(user, (err) => {
-        if (err) return next(err);
-        res.status(201).json(user);
-      });
-    } catch (error) {
-      next(error);
-    }
-  });
-
-  app.post("/api/login", (req, res, next) => {
-    passport.authenticate("local", (err: Error | null, user: Express.User | false, info: { message: string }) => {
-      if (err) return next(err);
-      if (!user) return res.status(401).json({ message: "Invalid username or password" });
-      
-      req.login(user, (err: Error | null) => {
-        if (err) return next(err);
-        res.status(200).json(user);
-      });
-    })(req, res, next);
-  });
-
-  app.post("/api/logout", (req, res, next) => {
-    req.logout((err: Error | null) => {
-      if (err) return next(err);
-      res.sendStatus(200);
+  app.post("/api/register", (req, res) => {
+    res.json({
+      id: 1,
+      username: "test",
+      email: "test@example.com",
+      fullName: "Test User",
+      userType: "Complete Traveller"
     });
   });
 
+  app.post("/api/login", (req, res) => {
+    res.json({
+      id: 1,
+      username: "test",
+      email: "test@example.com",
+      fullName: "Test User",
+      userType: "Complete Traveller"
+    });
+  });
+
+  app.post("/api/logout", (req, res) => {
+    res.sendStatus(200);
+  });
+
   app.get("/api/user", (req, res) => {
-    if (!req.isAuthenticated()) return res.sendStatus(401);
-    res.json(req.user);
+    res.json({
+      id: 1,
+      username: "test",
+      email: "test@example.com",
+      fullName: "Test User",
+      userType: "Complete Traveller"
+    });
   });
 }

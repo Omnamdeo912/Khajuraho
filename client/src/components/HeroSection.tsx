@@ -1,28 +1,83 @@
 import { getImageUrl } from "@/lib/utils";
 import { Calendar, Building, Landmark } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoError, setIsVideoError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleCanPlay = () => {
+      setIsLoading(false);
+      video.play().catch(error => {
+        console.error("Error playing video:", error);
+        setIsVideoError(true);
+      });
+    };
+
+    const handleError = () => {
+      console.error("Error loading video");
+      setIsVideoError(true);
+      setIsLoading(false);
+    };
+
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('error', handleError);
+
+    // Set initial playback rate
+    video.playbackRate = 0.5;
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('error', handleError);
+    };
+  }, []);
+
   return (
-    <section className="relative h-[90vh] bg-black">
+    <section className="relative h-[100vh] bg-black" id="hero">
       <div className="absolute inset-0 z-0">
-        <img
-          src={getImageUrl("temple-exterior-1")}
-          alt="Khajuraho Temples"
-          className="w-full h-full object-cover opacity-80"
-        />
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          </div>
+        )}
+        {!isVideoError ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover opacity-68"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <img 
+            src={getImageUrl("temple-sunset")} 
+            alt="Khajuraho Temple" 
+            className="w-full h-full object-cover opacity-80"
+          />
+        )}
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20 z-10"></div>
       <div className="relative z-20 flex flex-col justify-center items-center h-full text-center px-4 md:px-8">
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white text-shadow mb-4">
-          Khajuraho
+        <h1 className="font-['National_Park'] text-6xl md:text-6xl lg:text-7xl text-white tracking-[0.2em] uppercase mb-4">
+          K H A J U R A H O
         </h1>
-        <p className="font-display text-xl md:text-2xl text-white text-shadow max-w-3xl mx-auto mb-8">
-          Explore the magnificent temples where art transcends time
+        <p className="font-['National_Park'] text-xl md:text-2xl text-white text-shadow max-w-3xl mx-auto mb-8">
+          The Temples of Love and Art
         </p>
         <div className="space-x-4">
           <a
             href="#virtualtour"
-            className="inline-block px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-colors"
+            className="inline-block px-6 py-3 bg-[#EF9651] text-white font-medium rounded-md hover:bg-primary/90 transition-colors"
           >
             Virtual Tour
           </a>
@@ -49,6 +104,7 @@ const HeroSection = () => {
             <p className="text-sm">85 Temples</p>
           </div>
         </div>
+        
       </div>
     </section>
   );

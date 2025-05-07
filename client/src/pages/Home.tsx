@@ -7,6 +7,7 @@ import ExperiencesSection from "@/components/ExperiencesSection";
 import SafetyTips from "@/components/SafetyTips";
 import LocalFoodSection from "@/components/LocalFoodSection";
 import CallToAction from "@/components/CallToAction";
+import BackToTop from "@/components/BackToTop";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
       <SafetyTips />
       <LocalFoodSection />
       <CallToAction />
+      <BackToTop />
     </main>
   );
 };
