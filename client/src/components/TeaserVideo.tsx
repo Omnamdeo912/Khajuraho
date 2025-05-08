@@ -62,14 +62,16 @@ const TeaserVideo = () => {
 
   if (showYouTubeVideo) {
     return (
-      <div className="fixed inset-0 z-[9999] bg-black">
+      <div className="fixed inset-0 z-[9999] bg-black pointer-events-auto">
         <iframe
-          className="w-full h-full"
-          src="https://www.youtube.com/embed/i8LTDFomR8o?autoplay=1&mute=0&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&origin=http://localhost:3000"
-          title="Khajuraho Virtual Tour"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        style={{ pointerEvents: 'auto' }}
+  className="w-full h-full"
+  src="https://www.youtube.com/embed/i8LTDFomR8o?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1&playsinline=1"
+  title="Khajuraho Virtual Tour"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+  allowFullScreen
+/>
+
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 gap-4">
           <button
             onClick={() => {

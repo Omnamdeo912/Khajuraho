@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     id: 1,
     name: "Sound & Light Show",
     description: "Experience the history of Khajuraho narrated through an immersive sound and light show against the backdrop of illuminated temples.",
-    image: "/lightshow.png",
+    image: "https://www.i4utravels.com/wp-content/uploads/2019/03/17.jpg",
     category: "Heritage",
     duration: "50 minutes",
     price: "₹600 (English Show)"

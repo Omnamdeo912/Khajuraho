@@ -45,7 +45,7 @@ const localFoods: LocalFood[] = [
     id: 4,
     name: "Bhate Ka Raita",
     description: "Roasted and mashed eggplant mixed with yogurt and spices, served as a side dish.",
-    image: "client/public/Baingan-Raita-2-650x900.jpg",
+    image: "/baigan.png",
     tag: "Refreshing side"
   }
 ];
