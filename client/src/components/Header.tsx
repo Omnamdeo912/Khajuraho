@@ -38,7 +38,7 @@ const Header = () => {
                 className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
               />
               <div className="flex flex-col justify-center">
-                <span className="text-3xl pt-5 font-['MedievalSharp'] font-bold text-white leading-none hover:text-[#EA7300] tracking-wide">Khajuraho</span>
+                <span className="text-3xl pt-5 font-['NationalPark'] font-bold text-white leading-none hover:text-[#EA7300] tracking-wide">Khajuraho</span>
               </div>
             </Link>
           </div>
@@ -49,7 +49,7 @@ const Header = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavigation(item.path)}
-                className="text-xl relative font-['MedievalSharp'] text-white hover:text-[#EA7300] transition-all duration-300 font-medium px-3 py-2 group"
+                className="text-xl relative font-['NationalPark'] text-white hover:text-[#EA7300] transition-all duration-300 font-medium px-3 py-2 group"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#EA7300] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
