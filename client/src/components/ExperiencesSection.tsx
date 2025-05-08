@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     id: 1,
     name: "Sound & Light Show",
     description: "Experience the history of Khajuraho narrated through an immersive sound and light show against the backdrop of illuminated temples.",
-    image: "temple-sculpture-5",
+    image: "/lightshow.png",
     category: "Heritage",
     duration: "50 minutes",
     price: "₹600 (English Show)"
@@ -25,7 +25,7 @@ const experiences: Experience[] = [
     id: 2,
     name: "Cooking with Locals",
     description: "Learn to prepare traditional Bundelkhandi cuisine with a local family, and understand the cultural significance of regional food.",
-    image: "temple-sculpture-6",
+    image: "/dancefestival.png",
     category: "Culture",
     price: "₹1,500 per person",
     duration: "3 hours"
@@ -34,7 +34,7 @@ const experiences: Experience[] = [
     id: 3,
     name: "Panna Tiger Reserve Safari",
     description: "Explore the nearby Panna National Park, home to tigers, leopards, and over 200 species of birds, offering a refreshing nature break.",
-    image: "temple-sculpture-7",
+    image: "/wild4.png",
     category: "Wildlife",
     price: "₹2,500 per jeep",
     duration: "3-4 hours"

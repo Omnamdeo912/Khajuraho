@@ -1,60 +1,3 @@
-// import { useState } from "react";
-// import { X } from "lucide-react";
-// import { Button } from "@/components/ui/button";
-
-// interface TourOption {
-//   id: number;
-//   name: string;
-//   location: string;
-//   image: string;
-//   coordinates: { lat: number; lng: number };
-//   panoramaUrl: string;
-// }
-
-// const tourOptions: TourOption[] = [
-//   {
-//     id: 1,
-//     name: "Kandariya Mahadev Temple",
-//     location: "Western Complex",
-//     image: "/kandariya.jpg",
-//     coordinates: { lat: 24.8515, lng: 79.9255 },
-//     panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
-//   },
-//   {
-//     id: 2,
-//     name: "Lakshmana Temple",
-//     location: "Western Complex",
-//     image: "/kdm.png",
-//     coordinates: { lat: 24.8520, lng: 79.9245 },
-//     panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
-//   },
-//   {
-//     id: 3,
-//     name: "Chitragupta Temple",
-//     location: "Western Complex",
-//     image: "/kdm.png",
-//     coordinates: { lat: 24.8510, lng: 79.9235 },
-//     panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
-//   }
-// ];
-
-// const VirtualTour = () => {
-//   const [activeTour, setActiveTour] = useState(tourOptions[0]);
-//   const [showModal, setShowModal] = useState(false);
-
-//   const closeModal = () => {
-//     setShowModal(false);
-//   };
-
-//   return (
-//     <div>
-//       <h1>Virtual Tour</h1>
-//     </div>
-//   );
-// };
-
-// export default VirtualTour;
-
 
 import { useState, useEffect, useRef } from "react";
 import { X } from "lucide-react";
@@ -78,8 +21,8 @@ const tourOptions: TourOption[] = [
     name: "Kandariya Mahadeva Temple",
     location: "Western Complex",
     image: "/kandariya.jpg",
-    coordinates: { lat: 24.8526, lng: 79.9219 },
-    panoramaUrl: "/kandariya360.jpg"
+    coordinates: { lat: 24.853207, lng: 79.919702 },
+    panoramaUrl: "/kandariya360-re.jpg" // Ensure this image is in the public folder and optimized
   },
   {
     id: 2,
@@ -87,31 +30,31 @@ const tourOptions: TourOption[] = [
     location: "Western Complex",
     image: "/kdm.png",
     coordinates: { lat: 24.8524, lng: 79.9217 },
-    panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
+    panoramaUrl: "https://pannellum.org/images/alma.jpg" // Placeholder; replace with actual image URL
   },
   {
     id: 3,
     name: "Chitragupta Temple",
     location: "Western Complex",
     image: "/kdm.png",
-    coordinates: { lat: 24.8527, lng: 79.9220 },
-    panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
+    coordinates: { lat: 24.8543,  lng: 79.9201 },
+    panoramaUrl: "https://pannellum.org/images/alma.jpg" // Placeholder; replace with actual image URL
   },
   {
     id: 4,
     name: "Vishvanatha Temple",
     location: "Western Complex",
     image: "/kdm.png",
-    coordinates: { lat: 24.8525, lng: 79.9221 },
-    panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
+    coordinates: { lat: 24.8533, lng: 79.9223 },
+    panoramaUrl: "https://pannellum.org/images/alma.jpg" // Placeholder; replace with actual image URL
   },
   {
     id: 5,
     name: "Entry/Exit",
     location: "Western Complex",
     image: "/kdm.png",
-    coordinates: { lat: 24.8523, lng: 79.9215 },
-    panoramaUrl: "https://panoraven.com/en/embed/BswxViG1DM"
+    coordinates: { lat: 24.8521, lng: 79.9230 },
+    panoramaUrl: "https://pannellum.org/images/alma.jpg" // Placeholder; replace with actual image URL
   }
 ];
 
@@ -178,43 +121,11 @@ const VirtualTour = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="text-white py-8">
-        <h1 className="text-4xl font-bold text-center text-[#5B2C2B] mb-12">Khajuraho Virtual Tour</h1>
-        <p className="text-center text-[#5B2C2B] mt-2 text-lg">Explore the Western Group of Temples in 360°</p>
+      <header className="text-white py-8 shadow-lg">
+        <h1 className="text-4xl font-bold text-[#5B2C2B] text-center mb-4">Khajuraho Virtual Tour</h1>
+        <p className="text-center text-[#5B2C2B] mt-2 text-lg italic">Explore the Western Group of Temples in 360°</p>
       </header>
       <main className="container mx-auto p-4">
-        {/* Tour Cards */}
-        {/* <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Tour Locations</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {tourOptions.map((tour) => (
-              <div
-                key={tour.id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105"
-              >
-                <img
-                  src={tour.image}
-                  alt={tour.name}
-                  className="w-full h-48 object-cover"
-                  onError={(e) => (e.currentTarget.src = "https://via.placeholder.com/300x200?text=Image+Not+Found")}
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold">{tour.name}</h3>
-                  <p className="text-gray-600">{tour.location}</p>
-                  <Button
-                    className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700"
-                    onClick={() => {
-                      setActiveTour(tour);
-                      setShowModal(true);
-                    }}
-                  >
-                    Explore 360°
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section> */}
         {/* Map Section */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">Interactive Map</h2>
@@ -232,7 +143,7 @@ const VirtualTour = () => {
               <X size={24} />
             </button>
             <h3 className="text-2xl font-semibold mb-4">{activeTour.name}</h3>
-            <div className="w-full h-[500px]">
+            <div className="w-full h-[80vh]">
               <Pannellum
                 width="100%"
                 height="100%"
@@ -242,6 +153,7 @@ const VirtualTour = () => {
                 hfov={110}
                 autoLoad
                 showControls
+                onError={(err: Error) => console.error("Panorama loading error:", err)}
               />
             </div>
           </div>
